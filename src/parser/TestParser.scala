@@ -11,5 +11,5 @@ def main(args: String*): Unit =
       FileInputStream(args(0))
   val concreteTree = ConcreteParser.analyze(in)
   val visitor = new ASTVisitor
-  val abstractTree = visitor.visit(concreteTree).asInstanceOf[ast.Exp]
+  val abstractTree = visitor.visit(concreteTree).asInstanceOf[ast.Term]
   println(abstractTree)

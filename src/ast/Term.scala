@@ -1,9 +1,11 @@
 package ast
 
-enum Exp:
+enum Term:
   case Number(value: Int)
-  case BinaryExpression(op: Op, exp1: Exp, exp2: Exp)
-  case IfZero(test: Exp, exp1: Exp, exp2: Exp)
+  case BinaryExpression(op: Op, term1: Term, term2: Term)
+  case IfZero(test: Term, term1: Term, term2: Term)
+  case Var(id:String)
+  case Let(name : String, t1: Term, t2: Term)
 
 enum Op:
   case Plus, Minus, Multiply, Divide
@@ -15,5 +17,4 @@ object Op:
     case "*" => Multiply
     case "/" => Divide
     case _ => ???
-
 

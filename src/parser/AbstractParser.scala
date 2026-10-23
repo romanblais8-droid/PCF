@@ -1,13 +1,13 @@
 package parser
 
-import ast.Exp
+import ast.Term
 
 import java.io.InputStream
 
 object AbstractParser :
-  def analyze(in: InputStream): Exp =
+  def analyze(in: InputStream): Term =
     val concreteTree = ConcreteParser.analyze(in)
     val visitor = new ASTVisitor
-    val exp = visitor.visit(concreteTree).asInstanceOf[Exp]
+    val exp = visitor.visit(concreteTree).asInstanceOf[Term]
     println(s"AST: $exp")
     exp

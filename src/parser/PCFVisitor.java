@@ -1,4 +1,4 @@
-// Generated from C:/Users/roman/OneDrive/Documents/FISE_A2/Compilation & interprétation/PCF/src/parser/PCF.g4 by ANTLR 4.13.2
+// Generated from PCF.g4 by ANTLR 4.13.2
 package parser;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -32,12 +32,26 @@ public interface PCFVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBinaryExp1(PCFParser.BinaryExp1Context ctx);
 	/**
+	 * Visit a parse tree produced by the {@code Var}
+	 * labeled alternative in {@link PCFParser#exp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVar(PCFParser.VarContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code BinaryExp2}
 	 * labeled alternative in {@link PCFParser#exp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitBinaryExp2(PCFParser.BinaryExp2Context ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Let}
+	 * labeled alternative in {@link PCFParser#exp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLet(PCFParser.LetContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code IfZero}
 	 * labeled alternative in {@link PCFParser#exp}.

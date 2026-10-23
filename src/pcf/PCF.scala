@@ -12,5 +12,6 @@ object PCF:
         System.in
       else
         FileInputStream(args(0))
+
     val exp = analyze(in)
-    println(s"==> ${eval(exp)}")
+    println(s"==> ${eval(exp, Map())}")
