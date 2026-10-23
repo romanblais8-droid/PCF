@@ -27,10 +27,21 @@ class ASTVisitor extends PCFBaseVisitor[Exp] :
         visit(concreteExp)
     BinaryExpression(op, exp1, exp2)
 
+  override def visitBinaryExp2(ctx: PCFParser.BinaryExp2Context): Exp =
+    val s = ctx.OP2().getText
+    val op = Op.parse(s)
+    val concreteExps = ctx.exp.asScala.toList
+    val List(exp1, exp2) =
+      for (concreteExp <- concreteExps) yield
+        visit(concreteExp)
+    BinaryExpression(op, exp1, exp2)
+
+  override def visitParExp(ctx: PCFParser.ParExpContext): Exp =
+    visit(ctx.exp)
+
   override def visitIfZero(ctx: PCFParser.IfZeroContext): Exp =
     val concreteExps = ctx.exp.asScala.toList
     val List(exp1, exp2, exp3) =
       for (concreteExp <- concreteExps) yield
         visit(concreteExp)
     IfZero(exp1, exp2, exp3)
-
