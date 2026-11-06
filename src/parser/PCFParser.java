@@ -1,4 +1,4 @@
-// Generated from PCF.g4 by ANTLR 4.13.2
+// Generated from /home/telmo/Documents/IMT/ued/tpromain2/PCF/src/parser/PCF.g4 by ANTLR 4.13.2
 package parser;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -17,8 +17,8 @@ public class PCFParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, NUMBER=9, 
-		OP1=10, OP2=11, WS=12, VAR=13;
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
+		T__9=10, NUMBER=11, OP1=12, OP2=13, WS=14, VAR=15;
 	public static final int
 		RULE_exp = 0;
 	private static String[] makeRuleNames() {
@@ -30,14 +30,15 @@ public class PCFParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'ifz'", "'then'", "'else'", "'('", "')'", "'let'", "'='", "'in'"
+			null, "'ifz'", "'then'", "'else'", "'('", "')'", "'let'", "'='", "'in'", 
+			"'fun'", "'->'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, null, null, null, null, "NUMBER", "OP1", 
-			"OP2", "WS", "VAR"
+			null, null, null, null, null, null, null, null, null, null, null, "NUMBER", 
+			"OP1", "OP2", "WS", "VAR"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -104,11 +105,42 @@ public class PCFParser extends Parser {
 		}
 	}
 	@SuppressWarnings("CheckReturnValue")
+	public static class AppContext extends ExpContext {
+		public List<ExpContext> exp() {
+			return getRuleContexts(ExpContext.class);
+		}
+		public ExpContext exp(int i) {
+			return getRuleContext(ExpContext.class,i);
+		}
+		public AppContext(ExpContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).enterApp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).exitApp(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof PCFVisitor ) return ((PCFVisitor<? extends T>)visitor).visitApp(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class ParExpContext extends ExpContext {
 		public ExpContext exp() {
 			return getRuleContext(ExpContext.class,0);
 		}
 		public ParExpContext(ExpContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).enterParExp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).exitParExp(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof PCFVisitor ) return ((PCFVisitor<? extends T>)visitor).visitParExp(this);
@@ -119,6 +151,14 @@ public class PCFParser extends Parser {
 	public static class NumberContext extends ExpContext {
 		public TerminalNode NUMBER() { return getToken(PCFParser.NUMBER, 0); }
 		public NumberContext(ExpContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).enterNumber(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).exitNumber(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof PCFVisitor ) return ((PCFVisitor<? extends T>)visitor).visitNumber(this);
@@ -136,6 +176,14 @@ public class PCFParser extends Parser {
 		public TerminalNode OP1() { return getToken(PCFParser.OP1, 0); }
 		public BinaryExp1Context(ExpContext ctx) { copyFrom(ctx); }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).enterBinaryExp1(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).exitBinaryExp1(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof PCFVisitor ) return ((PCFVisitor<? extends T>)visitor).visitBinaryExp1(this);
 			else return visitor.visitChildren(this);
@@ -145,6 +193,14 @@ public class PCFParser extends Parser {
 	public static class VarContext extends ExpContext {
 		public TerminalNode VAR() { return getToken(PCFParser.VAR, 0); }
 		public VarContext(ExpContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).enterVar(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).exitVar(this);
+		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof PCFVisitor ) return ((PCFVisitor<? extends T>)visitor).visitVar(this);
@@ -162,6 +218,14 @@ public class PCFParser extends Parser {
 		public TerminalNode OP2() { return getToken(PCFParser.OP2, 0); }
 		public BinaryExp2Context(ExpContext ctx) { copyFrom(ctx); }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).enterBinaryExp2(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).exitBinaryExp2(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof PCFVisitor ) return ((PCFVisitor<? extends T>)visitor).visitBinaryExp2(this);
 			else return visitor.visitChildren(this);
@@ -178,6 +242,14 @@ public class PCFParser extends Parser {
 		}
 		public LetContext(ExpContext ctx) { copyFrom(ctx); }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).enterLet(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).exitLet(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof PCFVisitor ) return ((PCFVisitor<? extends T>)visitor).visitLet(this);
 			else return visitor.visitChildren(this);
@@ -193,8 +265,37 @@ public class PCFParser extends Parser {
 		}
 		public IfZeroContext(ExpContext ctx) { copyFrom(ctx); }
 		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).enterIfZero(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).exitIfZero(this);
+		}
+		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof PCFVisitor ) return ((PCFVisitor<? extends T>)visitor).visitIfZero(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class FunContext extends ExpContext {
+		public TerminalNode VAR() { return getToken(PCFParser.VAR, 0); }
+		public ExpContext exp() {
+			return getRuleContext(ExpContext.class,0);
+		}
+		public FunContext(ExpContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).enterFun(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof PCFListener ) ((PCFListener)listener).exitFun(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof PCFVisitor ) return ((PCFVisitor<? extends T>)visitor).visitFun(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -214,7 +315,7 @@ public class PCFParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(23);
+			setState(27);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case NUMBER:
@@ -243,7 +344,7 @@ public class PCFParser extends Parser {
 				setState(8);
 				match(T__2);
 				setState(9);
-				exp(4);
+				exp(5);
 				}
 				break;
 			case T__3:
@@ -284,6 +385,21 @@ public class PCFParser extends Parser {
 				setState(20);
 				match(T__7);
 				setState(21);
+				exp(2);
+				}
+				break;
+			case T__8:
+				{
+				_localctx = new FunContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(23);
+				match(T__8);
+				setState(24);
+				match(VAR);
+				setState(25);
+				match(T__9);
+				setState(26);
 				exp(1);
 				}
 				break;
@@ -291,7 +407,7 @@ public class PCFParser extends Parser {
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(33);
+			setState(39);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -299,37 +415,47 @@ public class PCFParser extends Parser {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(31);
+					setState(37);
 					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 					case 1:
 						{
-						_localctx = new BinaryExp1Context(new ExpContext(_parentctx, _parentState));
+						_localctx = new AppContext(new ExpContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_exp);
-						setState(25);
-						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
-						setState(26);
-						match(OP1);
-						setState(27);
-						exp(7);
+						setState(29);
+						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
+						setState(30);
+						exp(9);
 						}
 						break;
 					case 2:
 						{
+						_localctx = new BinaryExp1Context(new ExpContext(_parentctx, _parentState));
+						pushNewRecursionContext(_localctx, _startState, RULE_exp);
+						setState(31);
+						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
+						setState(32);
+						match(OP1);
+						setState(33);
+						exp(8);
+						}
+						break;
+					case 3:
+						{
 						_localctx = new BinaryExp2Context(new ExpContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_exp);
-						setState(28);
-						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
-						setState(29);
+						setState(34);
+						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
+						setState(35);
 						match(OP2);
-						setState(30);
-						exp(6);
+						setState(36);
+						exp(7);
 						}
 						break;
 					}
 					} 
 				}
-				setState(35);
+				setState(41);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 			}
@@ -356,40 +482,46 @@ public class PCFParser extends Parser {
 	private boolean exp_sempred(ExpContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 0:
-			return precpred(_ctx, 6);
+			return precpred(_ctx, 8);
 		case 1:
-			return precpred(_ctx, 5);
+			return precpred(_ctx, 7);
+		case 2:
+			return precpred(_ctx, 6);
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\r%\u0002\u0000\u0007\u0000\u0001\u0000\u0001\u0000\u0001"+
+		"\u0004\u0001\u000f+\u0002\u0000\u0007\u0000\u0001\u0000\u0001\u0000\u0001"+
 		"\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001"+
 		"\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001"+
 		"\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001"+
-		"\u0000\u0003\u0000\u0018\b\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001"+
-		"\u0000\u0001\u0000\u0001\u0000\u0005\u0000 \b\u0000\n\u0000\f\u0000#\t"+
-		"\u0000\u0001\u0000\u0000\u0001\u0000\u0001\u0000\u0000\u0000)\u0000\u0017"+
+		"\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0003\u0000\u001c"+
+		"\b\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001"+
+		"\u0000\u0001\u0000\u0001\u0000\u0005\u0000&\b\u0000\n\u0000\f\u0000)\t"+
+		"\u0000\u0001\u0000\u0000\u0001\u0000\u0001\u0000\u0000\u00001\u0000\u001b"+
 		"\u0001\u0000\u0000\u0000\u0002\u0003\u0006\u0000\uffff\uffff\u0000\u0003"+
-		"\u0018\u0005\t\u0000\u0000\u0004\u0005\u0005\u0001\u0000\u0000\u0005\u0006"+
-		"\u0003\u0000\u0000\u0000\u0006\u0007\u0005\u0002\u0000\u0000\u0007\b\u0003"+
-		"\u0000\u0000\u0000\b\t\u0005\u0003\u0000\u0000\t\n\u0003\u0000\u0000\u0004"+
-		"\n\u0018\u0001\u0000\u0000\u0000\u000b\f\u0005\u0004\u0000\u0000\f\r\u0003"+
-		"\u0000\u0000\u0000\r\u000e\u0005\u0005\u0000\u0000\u000e\u0018\u0001\u0000"+
-		"\u0000\u0000\u000f\u0018\u0005\r\u0000\u0000\u0010\u0011\u0005\u0006\u0000"+
-		"\u0000\u0011\u0012\u0005\r\u0000\u0000\u0012\u0013\u0005\u0007\u0000\u0000"+
-		"\u0013\u0014\u0003\u0000\u0000\u0000\u0014\u0015\u0005\b\u0000\u0000\u0015"+
-		"\u0016\u0003\u0000\u0000\u0001\u0016\u0018\u0001\u0000\u0000\u0000\u0017"+
-		"\u0002\u0001\u0000\u0000\u0000\u0017\u0004\u0001\u0000\u0000\u0000\u0017"+
-		"\u000b\u0001\u0000\u0000\u0000\u0017\u000f\u0001\u0000\u0000\u0000\u0017"+
-		"\u0010\u0001\u0000\u0000\u0000\u0018!\u0001\u0000\u0000\u0000\u0019\u001a"+
-		"\n\u0006\u0000\u0000\u001a\u001b\u0005\n\u0000\u0000\u001b \u0003\u0000"+
-		"\u0000\u0007\u001c\u001d\n\u0005\u0000\u0000\u001d\u001e\u0005\u000b\u0000"+
-		"\u0000\u001e \u0003\u0000\u0000\u0006\u001f\u0019\u0001\u0000\u0000\u0000"+
-		"\u001f\u001c\u0001\u0000\u0000\u0000 #\u0001\u0000\u0000\u0000!\u001f"+
-		"\u0001\u0000\u0000\u0000!\"\u0001\u0000\u0000\u0000\"\u0001\u0001\u0000"+
-		"\u0000\u0000#!\u0001\u0000\u0000\u0000\u0003\u0017\u001f!";
+		"\u001c\u0005\u000b\u0000\u0000\u0004\u0005\u0005\u0001\u0000\u0000\u0005"+
+		"\u0006\u0003\u0000\u0000\u0000\u0006\u0007\u0005\u0002\u0000\u0000\u0007"+
+		"\b\u0003\u0000\u0000\u0000\b\t\u0005\u0003\u0000\u0000\t\n\u0003\u0000"+
+		"\u0000\u0005\n\u001c\u0001\u0000\u0000\u0000\u000b\f\u0005\u0004\u0000"+
+		"\u0000\f\r\u0003\u0000\u0000\u0000\r\u000e\u0005\u0005\u0000\u0000\u000e"+
+		"\u001c\u0001\u0000\u0000\u0000\u000f\u001c\u0005\u000f\u0000\u0000\u0010"+
+		"\u0011\u0005\u0006\u0000\u0000\u0011\u0012\u0005\u000f\u0000\u0000\u0012"+
+		"\u0013\u0005\u0007\u0000\u0000\u0013\u0014\u0003\u0000\u0000\u0000\u0014"+
+		"\u0015\u0005\b\u0000\u0000\u0015\u0016\u0003\u0000\u0000\u0002\u0016\u001c"+
+		"\u0001\u0000\u0000\u0000\u0017\u0018\u0005\t\u0000\u0000\u0018\u0019\u0005"+
+		"\u000f\u0000\u0000\u0019\u001a\u0005\n\u0000\u0000\u001a\u001c\u0003\u0000"+
+		"\u0000\u0001\u001b\u0002\u0001\u0000\u0000\u0000\u001b\u0004\u0001\u0000"+
+		"\u0000\u0000\u001b\u000b\u0001\u0000\u0000\u0000\u001b\u000f\u0001\u0000"+
+		"\u0000\u0000\u001b\u0010\u0001\u0000\u0000\u0000\u001b\u0017\u0001\u0000"+
+		"\u0000\u0000\u001c\'\u0001\u0000\u0000\u0000\u001d\u001e\n\b\u0000\u0000"+
+		"\u001e&\u0003\u0000\u0000\t\u001f \n\u0007\u0000\u0000 !\u0005\f\u0000"+
+		"\u0000!&\u0003\u0000\u0000\b\"#\n\u0006\u0000\u0000#$\u0005\r\u0000\u0000"+
+		"$&\u0003\u0000\u0000\u0007%\u001d\u0001\u0000\u0000\u0000%\u001f\u0001"+
+		"\u0000\u0000\u0000%\"\u0001\u0000\u0000\u0000&)\u0001\u0000\u0000\u0000"+
+		"\'%\u0001\u0000\u0000\u0000\'(\u0001\u0000\u0000\u0000(\u0001\u0001\u0000"+
+		"\u0000\u0000)\'\u0001\u0000\u0000\u0000\u0003\u001b%\'";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

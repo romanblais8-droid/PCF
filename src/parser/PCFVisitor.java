@@ -1,4 +1,4 @@
-// Generated from PCF.g4 by ANTLR 4.13.2
+// Generated from /home/telmo/Documents/IMT/ued/tpromain2/PCF/src/parser/PCF.g4 by ANTLR 4.13.2
 package parser;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -10,6 +10,13 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  * operations with no return type.
  */
 public interface PCFVisitor<T> extends ParseTreeVisitor<T> {
+	/**
+	 * Visit a parse tree produced by the {@code App}
+	 * labeled alternative in {@link PCFParser#exp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitApp(PCFParser.AppContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code ParExp}
 	 * labeled alternative in {@link PCFParser#exp}.
@@ -59,4 +66,11 @@ public interface PCFVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitIfZero(PCFParser.IfZeroContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Fun}
+	 * labeled alternative in {@link PCFParser#exp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFun(PCFParser.FunContext ctx);
 }
