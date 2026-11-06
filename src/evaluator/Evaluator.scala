@@ -1,16 +1,21 @@
 package evaluator
 
-import ast.Term
+import ast.*
 import Term.*
 import ast.Op
 
 object Evaluator :
-  def eval(term: Term, e: Map[String, Int]): Int = term match
+  given int2Val: Conversion[Int, Value] = n => Value.intVal(n)
+  given val2Int: Conversion[Value, Int] =
+    case Value.intVal(n) => n
+    case _ => throw new IllegalArgumentException("Une valeur non entière est utilisée comme entier")
+
+  def eval(term: Term, e: Map[String, Value]): Value = term match
     
-    case Number(value) => value
+    case Number(value) => Value.intVal(value)
     
     case IfZero(t, e1, e2) => 
-      if eval(t, e) == 0 then eval(e1, e) else eval(e2, e)
+      if eval(t, e) == Value.intVal(0) then eval(e1, e) else eval(e2, e)
     
     case BinaryExpression(op, e1, e2) =>
       val v1 = eval(e1, e)
@@ -20,7 +25,7 @@ object Evaluator :
         case Op.Minus => v1 - v2
         case Op.Multiply => v1 * v2
         case Op.Divide =>
-          if v2 == 0 then throw new ArithmeticException("division par zéro")
+          if v2 == Value.intVal(0) then throw new ArithmeticException("division par zéro")
           else v1 / v2
 
     case Var(id) =>

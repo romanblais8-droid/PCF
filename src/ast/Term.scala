@@ -6,9 +6,14 @@ enum Term:
   case IfZero(test: Term, term1: Term, term2: Term)
   case Var(id:String)
   case Let(name : String, t1: Term, t2: Term)
+  case Fun(term : Term)
 
 enum Op:
   case Plus, Minus, Multiply, Divide
+
+enum Value :
+  case intVal(i: Int)
+  case closure(x: String, t: Term, e: Map[String, Value])
 
 object Op:
   def parse(op: String): Op = op match
