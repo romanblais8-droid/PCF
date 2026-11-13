@@ -34,3 +34,12 @@ object Evaluator :
     case Let(name, e1, e2) =>
       val value = eval(e1, e)
       eval(e2, e.updated(name, value))
+
+    case Fun(x, term) =>
+      Value.closure(x, term, e)
+
+    case App(e1, e2) =>
+      val arg = eval(e2, e)
+      eval(e1, e) match
+        case Value.closure(x, t, closureEnv) => eval(t, closureEnv.updated(x, arg))
+        case v => throw new RuntimeException(s"$v n'est pas une fonction")

@@ -6,7 +6,9 @@ enum Term:
   case IfZero(test: Term, term1: Term, term2: Term)
   case Var(id:String)
   case Let(name : String, t1: Term, t2: Term)
-  case Fun(term : Term)
+  case Fun(x: String, term : Term)
+  case App(term1: Term, term2: Term)
+  case Fix(name: String, term1: Term, term2: Term)
 
 enum Op:
   case Plus, Minus, Multiply, Divide
