@@ -56,5 +56,8 @@ class ASTVisitor extends PCFBaseVisitor[Term] :
   override def visitFun(ctx: PCFParser.FunContext): Term =
     Fun(ctx.VAR().getText, visit(ctx.exp))
 
+  override def visitFix(ctx: PCFParser.FixContext): Term =
+    Fix(ctx.VAR().getText, visit(ctx.exp))
+
   override def visitApp(ctx: PCFParser.AppContext): Term =
     App(visit(ctx.application), visit(ctx.atom))

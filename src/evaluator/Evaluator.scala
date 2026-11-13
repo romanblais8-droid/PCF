@@ -10,7 +10,7 @@ object Evaluator :
     case Value.intVal(n) => n
     case _ => throw new IllegalArgumentException("Une valeur non entière est utilisée comme entier")
 
-  def eval(term: Term, e: Map[String, Value]): Value = term match
+  def eval(term: Term, e: Env): Value = term match
     
     case Number(value) => Value.intVal(value)
     
@@ -29,7 +29,10 @@ object Evaluator :
           else v1 / v2
 
     case Var(id) =>
-      e.getOrElse(id, throw new NoSuchElementException(s"Variable non définie: $id"))
+      e.getOrElse(id, throw new NoSuchElementException(s"Variable non définie: $id")) match
+        case value: Value => value
+        case IceCube(x, t, savedEnv) =>
+          eval(t, savedEnv.updated(x, IceCube(x, t, savedEnv)))
 
     case Let(name, e1, e2) =>
       val value = eval(e1, e)
@@ -37,6 +40,10 @@ object Evaluator :
 
     case Fun(x, term) =>
       Value.closure(x, term, e)
+
+    case Fix(x, term) =>
+      val iceCube = IceCube(x, term, e)
+      eval(term, e.updated(x, iceCube))
 
     case App(e1, e2) =>
       val arg = eval(e2, e)

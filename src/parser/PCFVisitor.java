@@ -1,5 +1,4 @@
 // Generated from PCF.g4 by ANTLR 4.13.2
-package parser;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -17,6 +16,13 @@ public interface PCFVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFun(PCFParser.FunContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Fix}
+	 * labeled alternative in {@link PCFParser#exp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFix(PCFParser.FixContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Let}
 	 * labeled alternative in {@link PCFParser#exp}.

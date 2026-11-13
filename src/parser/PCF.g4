@@ -4,6 +4,7 @@ grammar PCF;
 //Expressions ordonnées par ordre de priorité
 
 exp: 'fun' VAR '->' exp                 # Fun
+   | 'fix' VAR exp                      # Fix
    | 'let' VAR '=' exp 'in' exp         # Let
    | 'ifz' exp 'then' exp 'else' exp    # IfZero
    | sum                                # FromSum
