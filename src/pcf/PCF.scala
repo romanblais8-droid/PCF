@@ -14,5 +14,4 @@ object PCF:
         FileInputStream(args(0))
 
     val term = analyze(in)
-    val typ = typer.Typer.eval(term, Map())
-    println(s"==> ${eval(term, Map())}: $typ")
+    println(s"==> ${eval(term, Map())}")
