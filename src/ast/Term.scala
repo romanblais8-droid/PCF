@@ -13,14 +13,6 @@ enum Term:
 enum Op:
   case Plus, Minus, Multiply, Divide
 
-enum Value :
-  case intVal(i: Int)
-  case closure(x: String, t: Term, e: Env)
-
-case class IceCube(x: String, t: Term, e: Env)
-
-type Env = Map[String, Value | IceCube]
-
 object Op:
   def parse(op: String): Op = op match
     case "+" => Plus
@@ -28,4 +20,3 @@ object Op:
     case "*" => Multiply
     case "/" => Divide
     case _ => ???
-
