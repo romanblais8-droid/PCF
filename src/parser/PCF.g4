@@ -1,5 +1,9 @@
 grammar PCF;
 
+@header {
+package parser;
+}
+
 //symboles non terminaux : minuscule ; types de lexème : majuscule (première lettre au moins)
 //Expressions ordonnées par ordre de priorité
 

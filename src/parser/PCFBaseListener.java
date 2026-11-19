@@ -1,4 +1,5 @@
 // Generated from PCF.g4 by ANTLR 4.13.2
+package parser;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
